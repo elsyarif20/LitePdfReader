@@ -1,0 +1,32 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="LitePDF Ultra Pro - Liyas Syarifudin Edition" 
+           Manufacturer="Liyas Syarifudin, S.Pd.I, M.Pd" 
+           Version="3.0.0.0" 
+           UpgradeCode="a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d">
+    
+    <MajorUpgrade DowngradeErrorMessage="Versi terbaru sudah terpasang." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="LitePDFReader" />
+    </StandardDirectory>
+
+    <ComponentGroup Id="AppComponents" Directory="INSTALLFOLDER">
+      <Component Id="MainExecutable" Guid="*">
+        <File Id="LitePDFEXE" Source="dist\LitePDF.exe" KeyPath="yes" Checksum="yes">
+          <Shortcut Name="LitePDF Ultra Pro" Directory="ProgramMenuFolder" Advertise="yes" />
+          <Shortcut Name="LitePDF Ultra Pro" Directory="DesktopFolder" Advertise="yes" />
+        </File>
+        <ProgId Id="LitePDF.Document" Description="PDF Document">
+          <Extension Id="pdf">
+            <Verb Id="open" Command="Open" TargetFile="LitePDFEXE" Argument="&quot;%1&quot;" />
+          </Extension>
+        </ProgId>
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="AppComponents" />
+    </Feature>
+  </Package>
+</Wix>

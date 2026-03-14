@@ -1,0 +1,6 @@
+LitePDFProject/
+│
+├── app_icon.ico       # File ikon (pastikan sudah ada)
+├── LitePDF.py         # Kode utama aplikasi
+├── Product.wxs        # Script untuk membuat Installer MSI
+└── build_process.txt  # Catatan langkah build (opsional)
